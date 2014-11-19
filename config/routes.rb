@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'auth/facebook', as: "auth_provider"
   get 'auth/facebook/callback', to: 'users#login'
 
+  resources :users
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

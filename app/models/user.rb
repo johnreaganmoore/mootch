@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :items
+	has_many :rentals
 
   def self.koala(auth)
     access_token = auth['token']

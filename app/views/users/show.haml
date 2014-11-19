@@ -1,3 +1,7 @@
-Hi Show
-
 = @user.name
+%p
+%ul
+- @user.items.each do |item|
+	%li=	item.name
+	%ul
+		%li= item.price_per_day

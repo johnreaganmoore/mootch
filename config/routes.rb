@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   root to: 'users#index', via: :get
   get 'auth/facebook', as: "auth_provider"
   get 'auth/facebook/callback', to: 'users#login'
+  # get '/auth/:provider/callback', to: 'sessions#create'
 
   resources :users
+  resources :rentals
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

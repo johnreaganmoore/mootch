@@ -1,0 +1,10 @@
+%h1 Rent Something
+= form_for @rental do |rental_form|
+	%p
+		= rental_form.label :user_id
+		= rental_form.number_field :user_id
+	%p
+		= rental_form.label :item_id
+		= rental_form.number_field :item_id
+
+	= rental_form.submit

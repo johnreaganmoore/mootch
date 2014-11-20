@@ -9,10 +9,10 @@ class UsersController < ApplicationController
 	  @user = User.koala(request.env['omniauth.auth']['credentials'])
 
 		User.where(facebook_id: @user['id']).first_or_create
-
 	end
 
 	def show
+	
 	end
 
 	private

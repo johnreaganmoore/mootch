@@ -1,0 +1,25 @@
+%h1 Add a new item
+= form_for @item do |item_form|
+	%p
+		= item_form.label :name
+		= item_form.text_field :name
+	%p
+		= item_form.label :description
+		= item_form.text_field :description
+	%p
+		= item_form.label :main_photo
+		= item_form.text_field :main_photo
+	%p
+		= item_form.label :price_per_day
+		= item_form.number_field :price_per_day
+	%p
+		= item_form.label :max_rental
+		= item_form.number_field :max_rental
+	%p
+		= item_form.label :min_rental
+		= item_form.number_field :min_rental
+	%p
+		= item_form.label :user_id
+		= item_form.number_field :user_id, :value => current_user.id
+
+	= item_form.submit "Add Item"

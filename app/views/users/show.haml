@@ -7,11 +7,9 @@
 		%li= item.price_per_day
 	= form_for Rental.new do |rental_form|
 		%p
-			= rental_form.label :user_id
-			= rental_form.number_field :user_id
+			= rental_form.hidden_field :user_id, :value => current_user.id
 		%p
-			= rental_form.label :item_id
-			= rental_form.number_field :item_id, :value => item.id
+			= rental_form.hidden_field :item_id, :value => item.id
 
 		= rental_form.submit "mootch"
 

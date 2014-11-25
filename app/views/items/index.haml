@@ -1,0 +1,16 @@
+- @items.each do |item|
+	%li=	item.name
+	%ul
+		%li= item.price_per_day
+	-if item.available?		
+		= form_for Rental.new do |rental_form|
+			= rental_form.hidden_field :user_id, :value => current_user.id
+			= rental_form.hidden_field :item_id, :value => item.id
+
+			= rental_form.submit "mootch this"
+	- else
+		= item.to_json
+		= form_for item do |item|
+			= item.hidden_field :available, :value => true 
+			= item.submit "return"
+

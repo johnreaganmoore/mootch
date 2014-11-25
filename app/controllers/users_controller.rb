@@ -6,13 +6,17 @@ class UsersController < ApplicationController
 	end
 
 	def login
-	  @user = User.koala(request.env['omniauth.auth']['credentials'])
+	 #  @user = User.koala(request.env['omniauth.auth']['credentials'])
 
-		User.where(facebook_id: @user['id']).first_or_create
+		# User.where(facebook_id: @user['id']).first_or_create
 	end
 
 	def show
-	
+
+	end
+
+	def update
+
 	end
 
 	private
@@ -23,7 +27,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :items)
+    params.require(:user).permit(:name, :items, :provider, :uid)
   end
 
 end

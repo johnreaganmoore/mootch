@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'validates_overlap'
+
+gem 'calendar_date_select'
+
+gem 'chronic'
+
 gem 'haml'
 
 gem 'omniauth-facebook' # Facebook authentication 

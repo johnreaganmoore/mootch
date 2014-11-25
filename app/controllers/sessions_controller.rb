@@ -1,18 +1,18 @@
 class SessionsController < ApplicationController
-  
   def create
-    # @user = User.find_or_create_from_auth_hash(auth_hash)
-
-    @user = User.where(auth_hash: auth_hash).first_or_create
-
-    self.current_user = @user
-    redirect_to '/'
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to root_url
   end
 
-  protected
-
-  def auth_hash
-    request.env['omniauth.auth']
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url
   end
 
+  private
+
+  def user_params 
+  	params.require(:user).permit(:provider, :uid, :name, :oauth_token, :oauth_expires_at) 
+  end
 end

@@ -1,0 +1,26 @@
+%strong= @item.name
+%ul
+	%li= @item.user.name
+	%li= @item.description
+	%li= @item.main_photo
+	%li= @item.min_rental
+	%li= @item.max_rental
+	%li= @item.price_per_day
+
+-if @item.available?		
+	= form_for Rental.new do |rental_form|
+		= rental_form.hidden_field :user_id, :value => current_user.id
+		= rental_form.hidden_field :item_id, :value => @item.id
+		= rental_form.label :start
+		= rental_form.datetime_select :start, :ampm => true, :value => Date.today
+		= rental_form.label :end
+		= rental_form.datetime_select :end, :ampm => true
+		= fields_for @item do |item_fields|
+			= item_fields.hidden_field :available, :value => true
+
+		= rental_form.submit "mootch this"
+- else
+	%p Item Currently Unvailable
+	= form_for @item do |item|
+		= item.hidden_field :available, :value => true 
+		= item.submit "return"
